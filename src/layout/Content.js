@@ -8,6 +8,8 @@ import TweetsContextProvider from '../contexts/TweetsContext';
 const Content = () => {
 
     return (
+        <TweetsContextProvider >
+
         <main className="flex-1 flex flex-col border-r border-l">
             <header className='flex sticky top-0 justify-between items-center p-4 border-b border-gray-extraLight bg-white'>
                 <span className='font-bold text-xl text-gray-900'>Home</span>
@@ -20,17 +22,18 @@ const Content = () => {
                     className="w-11 h-11 rounded-full"
                 />
 
-                <TweetsContextProvider >
+                
                     <TweetBox />
-                </TweetsContextProvider>
+                
                 
             </div>
             <Divider />
-            <TweetsContextProvider >
+            
                 <FeedList />
-            </TweetsContextProvider>
+            
 
         </main>
+        </TweetsContextProvider>
     )
 }
 
