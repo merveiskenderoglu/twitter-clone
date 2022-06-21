@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @layer utilities {
+    .w-1265 {
+        max-width : 1265px;
+    } 
+} */
+
