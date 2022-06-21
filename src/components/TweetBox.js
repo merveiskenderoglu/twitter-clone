@@ -1,47 +1,15 @@
 
 import { GIFIcon, MediaIcon, PollIcon, EmojiIcon, ScheduleIcon, LocationIcon } from "../icons/Icon";
-import { useState } from "react";
-// import {TweetsContext} from '../contexts/TweetsContext';
-import { createContext } from "react";
+
+import { TweetsContext } from "../contexts/TweetsContext";
+import { useContext } from "react";
 
 
+const TweetBox = () => {    
 
+    const {tweet, setTweet, tweetList, setTweetList, addTweetList} = useContext(TweetsContext);
 
-const TweetBox = () => {
-    
-    //text area'ya girilen yazıyı tweet olarak almak istiyorum
-    //text area'ya yazılan yazıyı tweet olarak tanımlayacağım
-    //bu tweetleri alıp bir arrayda tutacağım
-    //bu array'den ana ekrana yazdıracağım
-    //tweet tek bir nesne için useState yazacağım ve input value'yu burada alacağım
-    //tweetList için ayrı bir useState yazacağım, setTweetList ile listeyi oluşturacağım
-
-    const TweetContext = createContext();
-
-
-    const [tweet, setTweet] = useState("");
-
-    const [tweetList, setTweetList] = useState([""]);
-
-
-    const addTweetList = (tweet) => {
-        setTweetList([...tweetList, tweet]);
-        setTweet("");
-    }
-
-    const handleSubmit = (tweet) => {
-        addTweetList(tweet);
-        console.log(tweet);
-        console.log(tweetList)
-                
-    }
-
-    
-
-     
-    return (
-
-        <>
+    return (       
 
         <div className="flex flex-col w-full mt-2">
 
@@ -72,13 +40,13 @@ const TweetBox = () => {
 
                 </div>
                 <button className="bg-primary-base text-white rounded-full px-4 py-2 " 
-                onClick={()=> handleSubmit(tweet)}
+                onClick={()=> addTweetList(tweet)}
                 >Tweet</button>
             </div>
         </div>
 
-        <TweetContext value={tweetList}/>
-        </>
+        
+        
     )
 }
 
